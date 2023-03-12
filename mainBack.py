@@ -8,7 +8,6 @@ menu = [
     {'name' : 'Информация', 'url' : 'info'}
     ]
 
-
 @app.route('/')
 def index():
     return render_template('index.html', title='Главная', menu=menu)
@@ -29,7 +28,7 @@ def info():
 
 @app.route('/aaa')
 def info():
-    return '''hihi'''
+    return '''hihiASDASASD'''
 
 
 if __name__ == '__main__':
