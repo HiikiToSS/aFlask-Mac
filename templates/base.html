@@ -7,7 +7,7 @@
     {%block link%}
     <link type='text/css' rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
     {%endblock%}
-    {% block title -%}
+    {% block title %}
     {%if title%}
     <title>Про Flask - {{title}}</title>
     {%else%}
@@ -16,12 +16,12 @@
     {% endblock %}
 </head>
 <body>
-    {% block content -%}
-        {% block menu -%}
+    {% block content %}
+        {% block menu %}
         <ul class="menu_cont">
-            {% for el in menu -%}
+            {% for el in menu %}
             <div class="menu_link"><a href="{{el.url}}">{{el.name}}</a></div>
-            {% endfor -%}
+            {% endfor %}
         </ul>
         {%endblock%}
     <h1>{{title}}</h1>

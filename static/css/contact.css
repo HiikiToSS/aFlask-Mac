@@ -1,0 +1,14 @@
+.flash{
+    padding: 10px;
+    width: 130px;
+}
+
+.flash.success{
+    border: 3px dotted lightblue;
+    background-color: greenyellow;
+}
+
+.flash.error{
+    border: 3px dotted rgb(204, 61, 61);
+    background-color: coral;
+}
