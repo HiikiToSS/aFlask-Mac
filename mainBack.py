@@ -8,6 +8,7 @@ menu = [
     {'name' : 'Информация', 'url' : 'info'}
     ]
 
+
 @app.route('/')
 def index():
     return render_template('index.html', title='Главная', menu=menu)
