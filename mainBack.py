@@ -31,5 +31,9 @@ def contact():
 def info():
     return render_template('info.html', title='Информация', menu=menu)
 
+@app.errorhandler(404)
+def NotFound(error):
+    return render_template('page404.html', title='Такой страницы нет', menu=menu)
+
 if __name__ == '__main__':
     app.run(debug=True)
