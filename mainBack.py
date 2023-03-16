@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, redirect, session, url_for
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'lmaoWhatAPassword'
@@ -27,14 +27,23 @@ def contact():
         print(request.form)
     return render_template('contact.html', title='Обратная связь', menu=menu)
 
+@app.route("/login", methods=['POST', 'GET'])
+def login():
+    if 'userLogged' in session:
+        return redirect(url_for('profile', username=session['userLogged']))
+    elif request.method == 'POST' and request.form['username'] == 'hiikitoss' and request.form['password'] == 'finik':
+        session['userLogged'] = request.form['username']
+        return redirect(url_for('profile', username=session['userLogged']))
+    
+    return render_template('login.html', title='Авторизация', menu=menu)
+
 @app.route('/info')
 def info():
     return render_template('info.html', title='Информация', menu=menu)
 
-
 @app.errorhandler(404)
 def NotFound(error):
-    return render_template('page404.html', title='Такой страницы нет', menu=menu)
+    return render_template('page404.html', title='Такой страницы нет', menu=menu), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
