@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, redirect, session, url_for
+from flask import Flask, render_template, request, flash, redirect, session, url_for, abort
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'lmaoWhatAPassword'
@@ -31,9 +31,12 @@ def contact():
 
 @app.route('/profile/<username>')
 def profile(username):
+    if 'userLogged' not in session or session['userLogged'] != username:
+        abort(401)
+
     return f'Это очень проработанный профиль пользователя {username}'
 
-@app.route("/login", methods=['POST', 'GET'])                                           #КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ 
+@app.route("/login", methods=['POST', 'GET'])                                           #КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ
 @app.route("/'login", methods=['POST', 'GET'])
 def login():
     if 'userLogged' in session:
