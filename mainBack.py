@@ -27,7 +27,12 @@ def contact():
         print(request.form)
     return render_template('contact.html', title='Обратная связь', menu=menu)
 
-@app.route("/login", methods=['POST', 'GET'])
+@app.route('/profile/<username>')
+def profile(username):
+    return f'Это очень проработанный профиль пользователя {username}'
+
+@app.route("/login", methods=['POST', 'GET'])                                           #КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ КОСТЫЛЬ 
+@app.route("/'login", methods=['POST', 'GET'])
 def login():
     if 'userLogged' in session:
         return redirect(url_for('profile', username=session['userLogged']))
